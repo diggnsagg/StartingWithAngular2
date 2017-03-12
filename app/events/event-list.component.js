@@ -111,6 +111,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 EventListComponent.prototype.toggleImage = function () {
                     this.showImage = !this.showImage;
                 };
+                EventListComponent.prototype.ngOnInit = function () {
+                    console.log('In OnInit');
+                };
                 EventListComponent = __decorate([
                     core_1.Component({
                         selector: 'el-events',

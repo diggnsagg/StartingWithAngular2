@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component, OnInit } from 'angular2/core';
 import { IEvent } from './event';
 
 @Component({
@@ -6,7 +6,7 @@ import { IEvent } from './event';
     templateUrl: 'app/events/event-list.component.html',
     styleUrls: ['app/events/event-list.component.css']
 })
-export class EventListComponent {
+export class EventListComponent implements OnInit {
     pageTitle: string = 'Event List';
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -97,5 +97,9 @@ export class EventListComponent {
 
     toggleImage(): void {
         this.showImage = !this.showImage;
+    }
+
+    ngOnInit(): void {
+        console.log('In OnInit');
     }
 }
