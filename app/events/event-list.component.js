@@ -114,7 +114,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 EventListComponent = __decorate([
                     core_1.Component({
                         selector: 'el-events',
-                        templateUrl: 'app/events/event-list.component.html'
+                        templateUrl: 'app/events/event-list.component.html',
+                        styleUrls: ['app/events/event-list.component.css']
                     }), 
                     __metadata('design:paramtypes', [])
                 ], EventListComponent);

@@ -1,8 +1,10 @@
 import { Component } from 'angular2/core';
+import { IEvent } from './event';
 
 @Component({
     selector: 'el-events',
-    templateUrl: 'app/events/event-list.component.html'
+    templateUrl: 'app/events/event-list.component.html',
+    styleUrls: ['app/events/event-list.component.css']
 })
 export class EventListComponent {
     pageTitle: string = 'Event List';
@@ -10,7 +12,7 @@ export class EventListComponent {
     imageMargin: number = 2;
     showImage: boolean = false;
     searchCriteria: string = 'beach';
-    events: any[] = [
+    events: IEvent[] = [
         {
             'name': 'Event 1',
             'code': 'Evt100',
