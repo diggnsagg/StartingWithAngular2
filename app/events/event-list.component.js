@@ -1,4 +1,4 @@
-System.register(['angular2/core', './event-filter.pipe'], function(exports_1, context_1) {
+System.register(['angular2/core', './event-filter.pipe', '../shared/thumb.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './event-filter.pipe'], function(exports_1, co
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, event_filter_pipe_1;
+    var core_1, event_filter_pipe_1, thumb_component_1;
     var EventListComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', './event-filter.pipe'], function(exports_1, co
             },
             function (event_filter_pipe_1_1) {
                 event_filter_pipe_1 = event_filter_pipe_1_1;
+            },
+            function (thumb_component_1_1) {
+                thumb_component_1 = thumb_component_1_1;
             }],
         execute: function() {
             EventListComponent = (function () {
@@ -27,7 +30,7 @@ System.register(['angular2/core', './event-filter.pipe'], function(exports_1, co
                     this.imageWidth = 50;
                     this.imageMargin = 2;
                     this.showImage = false;
-                    this.searchCriteria = 'Event 3';
+                    this.searchCriteria = '';
                     this.events = [
                         {
                             'name': 'Event 1',
@@ -117,12 +120,16 @@ System.register(['angular2/core', './event-filter.pipe'], function(exports_1, co
                 EventListComponent.prototype.ngOnInit = function () {
                     console.log('In OnInit');
                 };
+                EventListComponent.prototype.onRatingclicked = function (message) {
+                    this.pageTitle = 'Event List: ' + message;
+                };
                 EventListComponent = __decorate([
                     core_1.Component({
                         selector: 'el-events',
                         templateUrl: 'app/events/event-list.component.html',
                         styleUrls: ['app/events/event-list.component.css'],
-                        pipes: [event_filter_pipe_1.EventFilterPipe]
+                        pipes: [event_filter_pipe_1.EventFilterPipe],
+                        directives: [thumb_component_1.ThumbComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], EventListComponent);
