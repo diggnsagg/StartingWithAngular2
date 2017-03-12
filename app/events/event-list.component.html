@@ -36,7 +36,7 @@
                 </tr>                
             </thead>
             <tbody>
-                <tr *ngFor='#event of events'>
+                <tr *ngFor='#event of events | eventFilter:searchCriteria'>
                     <td>
                         <img *ngIf='showImage'
                              [src]='event.imageUrl'

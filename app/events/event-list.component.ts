@@ -1,17 +1,19 @@
 import { Component, OnInit } from 'angular2/core';
 import { IEvent } from './event';
+import { EventFilterPipe } from './event-filter.pipe';
 
 @Component({
     selector: 'el-events',
     templateUrl: 'app/events/event-list.component.html',
-    styleUrls: ['app/events/event-list.component.css']
+    styleUrls: ['app/events/event-list.component.css'],
+    pipes: [EventFilterPipe]
 })
 export class EventListComponent implements OnInit {
     pageTitle: string = 'Event List';
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    searchCriteria: string = 'beach';
+    searchCriteria: string = 'Event 3';
     events: IEvent[] = [
         {
             'name': 'Event 1',
