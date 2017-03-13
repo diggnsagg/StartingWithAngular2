@@ -1,6 +1,8 @@
 import { Component } from 'angular2/core';
 import { EventListComponent } from './events/event-list.component';
 import { EventService } from './events/event.service';
+import { HTTP_PROVIDERS } from 'angular2/http';
+import 'rxjs/Rx';
 
 @Component({
     selector: 'events-app',
@@ -11,7 +13,7 @@ import { EventService } from './events/event.service';
         </div>
     `,
     directives: [EventListComponent],
-    providers: [EventService]
+    providers: [EventService, HTTP_PROVIDERS]
 })
 export class AppComponent {
     pageTitle: string = 'Local Events App';

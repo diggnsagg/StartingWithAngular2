@@ -18,6 +18,7 @@ export class EventListComponent implements OnInit {
     showImage: boolean = false;
     searchCriteria: string;
     events: IEvent[];
+    errorMessage: string;
 
     constructor(private _eventService: EventService) {
 
@@ -29,7 +30,10 @@ export class EventListComponent implements OnInit {
 
     ngOnInit(): void {
         console.log('In OnInit');
-        this.events = this._eventService.getEvents();
+        // this.events = this._eventService.getEvents();
+        this._eventService.getEvents()
+            .subscribe( events  => this.events = events,
+                        error   => this.errorMessage = <any>error);
     }
 
     onRatingclicked(message: string): void {

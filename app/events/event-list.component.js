@@ -39,8 +39,11 @@ System.register(['angular2/core', './event-filter.pipe', '../shared/thumb.compon
                     this.showImage = !this.showImage;
                 };
                 EventListComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     console.log('In OnInit');
-                    this.events = this._eventService.getEvents();
+                    // this.events = this._eventService.getEvents();
+                    this._eventService.getEvents()
+                        .subscribe(function (events) { return _this.events = events; }, function (error) { return _this.errorMessage = error; });
                 };
                 EventListComponent.prototype.onRatingclicked = function (message) {
                     this.pageTitle = 'Event List: ' + message;
