@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core';
 import { EventListComponent } from './events/event-list.component';
+import { EventService } from './events/event.service';
 
 @Component({
     selector: 'events-app',
@@ -9,7 +10,8 @@ import { EventListComponent } from './events/event-list.component';
             <el-events></el-events>
         </div>
     `,
-    directives: [EventListComponent]
+    directives: [EventListComponent],
+    providers: [EventService]
 })
 export class AppComponent {
     pageTitle: string = 'Local Events App';

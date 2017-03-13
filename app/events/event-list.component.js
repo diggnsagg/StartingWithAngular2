@@ -1,4 +1,4 @@
-System.register(['angular2/core', './event-filter.pipe', '../shared/thumb.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './event-filter.pipe', '../shared/thumb.component', './event.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './event-filter.pipe', '../shared/thumb.compon
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, event_filter_pipe_1, thumb_component_1;
+    var core_1, event_filter_pipe_1, thumb_component_1, event_service_1;
     var EventListComponent;
     return {
         setters:[
@@ -22,103 +22,25 @@ System.register(['angular2/core', './event-filter.pipe', '../shared/thumb.compon
             },
             function (thumb_component_1_1) {
                 thumb_component_1 = thumb_component_1_1;
+            },
+            function (event_service_1_1) {
+                event_service_1 = event_service_1_1;
             }],
         execute: function() {
             EventListComponent = (function () {
-                function EventListComponent() {
+                function EventListComponent(_eventService) {
+                    this._eventService = _eventService;
                     this.pageTitle = 'Event List';
                     this.imageWidth = 50;
                     this.imageMargin = 2;
                     this.showImage = false;
-                    this.searchCriteria = '';
-                    this.events = [
-                        {
-                            'name': 'Event 1',
-                            'code': 'Evt100',
-                            'description': 'The first event',
-                            'date': '2016.01.01',
-                            'time': '1:00 PM',
-                            'duration': '1 Hour',
-                            'fee': 1,
-                            'rating': 1,
-                            'imageUrl': 'https://openclipart.org/image/300px/svg_to_png/193230/Tux-at-the-Beach-by-Merlin2525.png',
-                            'location': {
-                                'streetAddr': '101 Main St.',
-                                'city': 'Los Angeles',
-                                'state': 'CA',
-                                'zip': '87885',
-                                'lon': 0,
-                                'lat': 0
-                            },
-                            'capacity': 100
-                        },
-                        {
-                            'name': 'Event 2',
-                            'code': 'Evt200',
-                            'description': 'The second event',
-                            'date': '2016.02.02',
-                            'time': '2:00 PM',
-                            'duration': '2 Hours',
-                            'fee': 2,
-                            'rating': 2,
-                            'imageUrl': 'https://openclipart.org/image/300px/svg_to_png/221228/Ice-Cream-Beach.png',
-                            'location': {
-                                'streetAddr': '202 Main St.',
-                                'city': 'Los Angeles',
-                                'state': 'CA',
-                                'zip': '87885',
-                                'lon': 0,
-                                'lat': 0
-                            },
-                            'capacity': 200
-                        },
-                        {
-                            'name': 'Event 3',
-                            'code': 'Evt300',
-                            'description': 'The third event',
-                            'date': '2016.03.03',
-                            'time': '3:00 PM',
-                            'duration': '3 Hours',
-                            'fee': 3,
-                            'rating': 3,
-                            'imageUrl': 'https://openclipart.org/image/300px/svg_to_png/216716/plage-1-REMIX.png',
-                            'location': {
-                                'streetAddr': '303 Main St.',
-                                'city': 'Los Angeles',
-                                'state': 'CA',
-                                'zip': '87885',
-                                'lon': 0,
-                                'lat': 0
-                            },
-                            'capacity': 300
-                        },
-                        {
-                            'name': 'Event 4',
-                            'code': 'Evt400',
-                            'description': 'The fourth event',
-                            'date': '2016.04.04',
-                            'time': '4:00 PM',
-                            'duration': '4 Hours',
-                            'fee': 4,
-                            'rating': 4,
-                            'imageUrl': 'https://openclipart.org/image/300px/svg_to_png/5351/addon-sandcastle-2.png',
-                            'location': {
-                                'streetAddr': '404 Main St.',
-                                'city': 'Los Angeles',
-                                'state': 'CA',
-                                'zip': '87885',
-                                'lon': 0,
-                                'lat': 0
-                            },
-                            'capacity': 400
-                        }
-                    ];
                 }
                 EventListComponent.prototype.toggleImage = function () {
                     this.showImage = !this.showImage;
                 };
                 EventListComponent.prototype.ngOnInit = function () {
                     console.log('In OnInit');
+                    this.events = this._eventService.getEvents();
                 };
                 EventListComponent.prototype.onRatingclicked = function (message) {
                     this.pageTitle = 'Event List: ' + message;
@@ -131,7 +53,7 @@ System.register(['angular2/core', './event-filter.pipe', '../shared/thumb.compon
                         pipes: [event_filter_pipe_1.EventFilterPipe],
                         directives: [thumb_component_1.ThumbComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [event_service_1.EventService])
                 ], EventListComponent);
                 return EventListComponent;
             }());
